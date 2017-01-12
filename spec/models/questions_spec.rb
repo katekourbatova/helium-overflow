@@ -1,7 +1,8 @@
 require_relative '../spec_helper'
 
 describe Question do
-  let(:question) {Question.create()}
+  let(:question){Question.new({title: 'Balloon exploded',
+                                    body: 'How do you prevent a balloon from exploding?'})}
   describe "a question can be created" do
     it 'has a title' do
       expect(question.title).to eq('Balloon exploded')
