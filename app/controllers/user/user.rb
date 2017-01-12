@@ -29,3 +29,6 @@ get '/users/:id' do
   erb :'users/profile'
 end
 
+get '/access-denied' do
+  'Access Denied. Please log in.<a href="/login">Log in</a>'
+end
