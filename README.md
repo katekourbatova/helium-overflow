@@ -36,6 +36,6 @@
 
 * A vote can be an upvote (+1) or a downvote (-1)
 
-* A vote can be on questions or answers 
+* A vote can be on questions, answers or comments 
 
-    * Votes have a polymorphic association with Questions and Answers
+    * Votes have a polymorphic association with Questions, Answers, and Comments
