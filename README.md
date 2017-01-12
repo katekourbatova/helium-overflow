@@ -1,6 +1,6 @@
-#Helium
+# Helium
 
-##Members
+## Members
 
 * Kate
 * Stephen
@@ -8,7 +8,7 @@
 * Justin
 * Tim
 
-##User Stories [USERS]
+## User Stories [USERS]
 
 * Users can login/logout, and delete their account.
 
@@ -22,7 +22,7 @@
 
 * Users cannot add a question, answer, or comment or vote unless they're logged in, but they can view all of the above when logged out.
 
-##User Stories [QUESTIONS]
+## User Stories [QUESTIONS]
 
 * A user can can create a question [as an author].
 
@@ -31,3 +31,11 @@
 * A user can vote on a question [up/down]
 
 * Users can delete a question.
+
+## User Stories [VOTES]
+
+* A vote can be an upvote (+1) or a downvote (-1)
+
+* A vote can be on questions or answers 
+
+    * Votes have a polymorphic association with Questions and Answers
