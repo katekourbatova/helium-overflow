@@ -13,9 +13,9 @@ get '/questions/:question_id/comments/new' do
 end
 
 post '/questions/:question_id/comments' do
-  if session_logged_in?
+  @author = session_current_user
+  if session_is_current_user?(@author)
     @question = Question.find(params[:question_id])
-    @author = session_current_user
     @comment = @question.comments.create(body: params[:comment_body], author_id: @author.id, commentable_id: @question.id, commentable_type: "question" )
   else:
     @msgs = "You must be logged in to comment"
@@ -38,7 +38,8 @@ get '/answers/:answer_id/comments/new' do
 end
 
 post '/answers/:answer_id/comments' do
-  if session_logged_in?
+  @author = session_current_user
+  if session_is_current_user?(@author)
     @answer = Answer.find(params[:answer_id])
     @author = session_current_user
     @comment = @answer.comments.create(body: params[:comment_body], author_id: @author.id, commentable_id: @answer.id, commentable_type: "answer" )
