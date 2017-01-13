@@ -17,7 +17,7 @@ post '/questions/:question_id/comments' do
     @question = Question.find(params[:question_id])
     @author = session_current_user
     @comment = @question.comments.create(body: params[:comment_body], author_id: @author.id, commentable_id: @question.id, commentable_type: "question" )
-  else:
+  else
     @msgs = "You must be logged in to comment"
   end
   erb :'/comments/show'
@@ -42,7 +42,7 @@ post '/answers/:answer_id/comments' do
     @answer = Answer.find(params[:answer_id])
     @author = session_current_user
     @comment = @answer.comments.create(body: params[:comment_body], author_id: @author.id, commentable_id: @answer.id, commentable_type: "answer" )
-  else:
+  else
     @msgs = "You must be logged in to comment"
   end
   erb :'/comments/show'
