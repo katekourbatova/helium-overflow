@@ -14,7 +14,7 @@ get '/users' do
 end
 
 post '/users' do
-  @user = User.new(username: params[:username], email: params[:user_email], password_hash: params[:user_password])
+  @user = User.new(params[:user])
   if @user.save
     session[:user_id] = @user.id
     redirect "/users/#{@user.id}"
