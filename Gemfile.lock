@@ -28,7 +28,7 @@ GEM
     eventmachine (1.2.0.1)
     factory_girl (4.5.0)
       activesupport (>= 3.0.0)
-    faker (1.4.3)
+    faker (1.7.2)
       i18n (~> 0.5)
     i18n (0.7.0)
     json (1.8.3)
@@ -92,7 +92,7 @@ DEPENDENCIES
   activesupport
   capybara
   factory_girl
-  faker
+  faker (~> 1.7.2)
   pg
   rack-test
   rake
@@ -104,4 +104,4 @@ DEPENDENCIES
   thin
 
 BUNDLED WITH
-   1.11.2
+   1.12.5
