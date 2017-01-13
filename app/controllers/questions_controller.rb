@@ -1,4 +1,4 @@
-get '/questions' do
+get '/' do
   @questions = Question.all
   erb :'questions/index'
 end
