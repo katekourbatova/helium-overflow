@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
   has_many :votes
   has_many :questions
   has_many :answers
-  has_many :comments, through: :answers, source: :author_id
+  has_many :comments, foreign_key: :author_id
   validates :username, :email, presence: true
 
   def password
