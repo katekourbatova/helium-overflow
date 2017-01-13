@@ -2,7 +2,12 @@ require 'spec_helper'
 
 describe Vote, type: :model do
   it {should belong_to(:user)}
-  it {should belong_to(:comment)}
-  it {should belong_to(:question)}
-  it {should belong_to(:answer)}
+  it {should belong_to(:voteable)}
+end
+
+describe Vote do
+    it { should validate_presence_of(:value) }
+    it { should validate_presence_of(:user_id) }
+    it { should validate_presence_of(:voteable_id) }
+    it { should validate_presence_of(:voteable_type) }
 end
