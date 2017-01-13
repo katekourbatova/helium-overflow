@@ -9,8 +9,7 @@ describe Question do
   let(:bodyless_question){
     Question.new(title: 'Balloon exploded')
   }
-  let(:question){Question.new({title: 'Balloon exploded',
-                                    body: 'How do you prevent a balloon from exploding?'})}
+
   describe "a question can be created" do
     it 'has a title' do
       expect(question.title).to eq('Balloon exploded')
