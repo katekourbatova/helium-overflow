@@ -1,5 +1,5 @@
 helpers do
-  def h(text)
+  def html_escaper(text)
     Rack::Utils.escape_html(text)
   end
 end
