@@ -6,7 +6,7 @@
 <!-- do not route to this unless @current_user -->
 
 <form class="comment_form" id="<%=comm" action='/comments' method="post" >
-  <input type="text" value="comment_body" placeholder="Comment as <%=@current_user.username%>">
+  <input type="text" value="comment_body" placeholder="Comment as <%= @author.username %>">
   <button type="submit">Submit</button>
 </form>
 
