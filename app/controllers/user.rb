@@ -5,9 +5,9 @@ get '/users/new' do
 end
 
 get '/users' do
-  @user_id = session[:user_id]
-  if session[:user_id]
-    redirect "users/#{@user_id}"
+  current_user = session_current_user
+  if session_is_current_user?(current_user)
+    redirect "/users/#{@user_id}"
   else
     erb :'users/login'
   end
@@ -16,7 +16,7 @@ end
 post '/users' do
   @user = User.new(params[:user])
   if @user.save
-    session[:user_id] = @user.id
+    session_is_current_user(@user)
     redirect "/users/#{@user.id}"
   else
     erb:'users/new'
@@ -25,7 +25,7 @@ end
 
 get '/users/:id' do
   redirect '/access-denied' unless session_logged_in?
-  @user = User.find(params[:id])
+  session_current_user
   erb :'users/profile'
 end
 
