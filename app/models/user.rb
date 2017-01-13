@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
   has_many :questions
   has_many :answers
   has_many :comments, foreign_key: :author_id
-  validates :username, :email, presence: true
+  validates :username, :email, :password_hash, presence: true
 
   def password
     @password ||= Password.new(self.password_hash)
