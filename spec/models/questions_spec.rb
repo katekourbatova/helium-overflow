@@ -21,7 +21,7 @@ describe Question do
       Author.new()
     }
     let(:answer_1){
-      Answer.new({question_id: question.id}})
+      Answer.new({question_id: question.id})
     }
     let(:comment_1){
       Comment.new({ commentable_id: 1, commentable_type: 'Question' })
