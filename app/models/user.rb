@@ -1,6 +1,7 @@
 require 'bcrypt'
 
 class User < ActiveRecord::Base
+<<<<<<< HEAD
   include BCrypt
 
   has_many :votes
@@ -17,6 +18,12 @@ class User < ActiveRecord::Base
     @password = Password.create(new_password)
     self.password_hash = @password
   end
+=======
+  has_many :votes
+  has_many :questions
+  has_many :answers
+  has_many :comments, foreign_key: :author_id
+>>>>>>> origin
 
   def self.authenticate(email, login_password)
     user = User.find_by(email: email)
