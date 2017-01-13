@@ -1,9 +1,12 @@
 require_relative '../spec_helper'
 
-describe 'User' do
+describe User do
   let(:user) {User.new({username: 'XxIuSeAiMxX',
                        email: 'roflcopter@aol.com',
                        password_hash: 'ilovemywalkman'})}
+  let(:user2) {User.new({username: '',
+                        email: '',
+                        password_hash: ''})}
 
   describe "user creation" do
     it 'has a username' do
@@ -17,11 +20,11 @@ describe 'User' do
 
   describe "VALIDATIONS" do
     it 'requires a username' do
-       expect(user.username).to be_invalid
+       expect(user2.username).to be_invalid
     end
 
     it 'requires an email' do
-       expect(user.username).to be_invalid
+       expect(user2.username).to be_invalid
     end
   end
 end
