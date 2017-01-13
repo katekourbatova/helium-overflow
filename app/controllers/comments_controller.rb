@@ -15,7 +15,7 @@ get '/questions/:id/comments/new' do
     erb :'comments/_form'
   else
     @msgs = ["You must be logged in to comment"]
-    erb :'/comments/errors'
+    erb :'/comments/errors', layout: false
   end
 end
 
@@ -46,7 +46,7 @@ get '/answers/:id/comments/new' do
     erb :'comments/_form'
   else
     @msgs = ["You must be logged in to comment"]
-    erb :'/comments/errors'
+    erb :'/comments/errors', layout: false
   end
 end
 
