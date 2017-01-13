@@ -8,26 +8,22 @@ class User < ActiveRecord::Base
   validates :username, :email, presence: true
 
   def password
-      @password ||= Password.new(self.password_hash)
-    end
-
-    def password=(new_password)
-      @password = Password.create(new_password)
-      self.password_hash = @password
-    end
-
-    def self.authenticate(email, login_password)
-      user = User.find_by(email: email)
-      return nil unless user
-      if user.password == login_password
-        user
-      else
-        nil
-      end
-    end
+    @password ||= Password.new(self.password_hash)
   end
 
+  def password=(new_password)
+    @password = Password.create(new_password)
+    self.password_hash = @password
+  end
 
-
+  def self.authenticate(email, login_password)
+    user = User.find_by(email: email)
+    return nil unless user
+    if user.password == login_password
+      user
+    else
+      nil
+    end
+  end
 
 end
