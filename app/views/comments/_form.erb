@@ -1,13 +1,9 @@
-<!-- error handling/notification of commentability restriction -->
- <% if @msgs %>
-  <% @msgs.each do |msg| %>
-<p class="messages"><% msg %></p>
-<%else%>
+
+
 <!-- do not route to this unless @current_user -->
 
-<form class="comment_form" id="<%=comm" action='/comments' method="post" >
+<form class="comment_form" id="<%=@commentable.id%> action='/comments' method="post" >
   <input type="text" value="comment_body" placeholder="Comment as <%= @author.username %>">
   <button type="submit">Submit</button>
 </form>
 
-<%end%>

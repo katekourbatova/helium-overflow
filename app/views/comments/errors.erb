@@ -1,0 +1,6 @@
+<!-- error handling/notification of commentability restriction -->
+<% unless @msgs.empty? %>
+  <% @msgs.each do |msg| %>
+  <p class="messages"><%=msg %></p>
+  <%end%>
+<%end%>
