@@ -12,10 +12,11 @@ get '/questions/:id/comments/new' do
   erb :'comments/show'
 end
 
-post '/questions/:id/comments' do
-  if session_logged_in?
-    @question = Question.find(params[:id])
-    @author = session_current_user
+post '/questions/:question_id/comments' do
+  @author = session_current_user
+  if session_is_current_user?(@author)
+    @question = Question.find(params[:question_id])
+
     @comment = @question.comments.create(body: params[:comment_body], author_id: @author.id, commentable_id: @question.id, commentable_type: "question" )
   else
     @msgs = "You must be logged in to comment"
@@ -37,9 +38,10 @@ get '/answers/:id/comments/new' do
   erb :'comments/show'
 end
 
-post '/answers/:id/comments' do
-  if session_logged_in?
-    @answer = Answer.find(params[:id])
+post '/answers/:answer_id/comments' do
+  @author = session_current_user
+  if session_is_current_user?(@author)
+    @answer = Answer.find(params[:answer_id])
     @author = session_current_user
     @comment = @answer.comments.create(body: params[:comment_body], author_id: @author.id, commentable_id: @answer.id, commentable_type: "answer" )
   else

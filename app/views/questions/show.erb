@@ -1,5 +1,5 @@
 <div id="question-container">
-  <h3><%= @question.title %></h3>
-  <p><%= @question.body %></p>
-  <p>by <%= @question.author.username %> [<%= @question.created_at %>]</p>
+  <h3><%= html_escaper(@question.title) %></h3>
+  <p><%= html_escaper(@question.body) %></p>
+  <p>by <%= html_escaper(@question.author.username) %> [<%= html_escaper(@question.created_at) %>]</p>
 </div>
