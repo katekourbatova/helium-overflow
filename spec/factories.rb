@@ -16,7 +16,7 @@ FactoryGirl.define do
   factory :user do
     username Faker::Lorem.word
     email Faker::Internet.email
-    password_hash Faker::Internet.password
+    password Faker::Internet.password
   end
 
 end
