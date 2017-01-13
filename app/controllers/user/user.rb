@@ -24,7 +24,7 @@ post '/users' do
 end
 
 get '/users/:id' do
-  redirect '/access-denied' unless session[:user_id]
+  redirect '/access-denied' unless session_logged_in?
   @user = User.find(params[:id])
   erb :'users/profile'
 end
