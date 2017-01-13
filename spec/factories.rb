@@ -1,4 +1,5 @@
 FactoryGirl.define do
+
   factory :answer do
     body Faker::Lorem.paragraph
     is_best false
