@@ -29,7 +29,7 @@ post '/questions' do
     redirect "/questions/#{@question.id}"
   else
     @errors = @question.errors.full_messages
-    erb :'entries/new'
+    erb :'questions/new'
   end
 end
 
