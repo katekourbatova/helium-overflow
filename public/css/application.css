@@ -125,3 +125,18 @@ form#posts input[type='submit'] {
   vertical-align: sub;
   padding: 1px 0px 0px 0px;
 }
+
+/* JUSTIN's CSS BELOW, NOTING for safety purposes */
+
+.show-question-container, .answer-container, .question-container{
+  background-color: lightgray;
+  height: 100px;
+}
+
+.answer-container{
+  background-color: lightblue;
+}
+
+.vote-form{
+  float: left;
+}
