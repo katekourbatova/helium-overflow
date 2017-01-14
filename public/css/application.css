@@ -137,8 +137,12 @@ form#posts input[type='submit'] {
   background-color: lightblue;
 }
 
-.vote-form{
+.vote-form {
   float: left;
+}
+
+.upvote, .downvote {
+  background-color: transparent;
 }
 
 .upvote {
@@ -158,6 +162,6 @@ form#posts input[type='submit'] {
   border-left: 10px solid transparent;
   border-right: 10px solid transparent;
 
-  border-top: 10px solid blue;
+  border-top: 10px solid black;
 }
 
