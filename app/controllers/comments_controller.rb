@@ -19,9 +19,11 @@ get '/questions/:id/comments/new' do
   end
 end
 
-post '/questions/:id/comments' do
-  @user = session_current_user
-  if session_is_current_user (@user)
+post '/questions/:question_id/comments' do
+  @author = session_current_user
+  if session_is_current_user?(@author)
+    @question = Question.find(params[:question_id])
+
     @comment = @question.comments.create(body: params[:comment_body], author_id: @author.id, commentable_id: @question.id, commentable_type: "question" )
       erb :'/comments/show'
   else
@@ -50,8 +52,10 @@ get '/answers/:id/comments/new' do
   end
 end
 
-post '/answers/:id/comments' do
-    @answer = Answer.find(params[:id])
+post '/answers/:answer_id/comments' do
+  @author = session_current_user
+  if session_is_current_user?(@author)
+    @answer = Answer.find(params[:answer_id])
     @author = session_current_user
     @comment = @answer.comments.create(body: params[:comment_body], author_id: @author.id, commentable_id: @answer.id, commentable_type: "answer" )
   if session_is_current_user(@author)
