@@ -1,5 +1,5 @@
-<div id=answer-<%= question.id %>-container>
-  <%= erb :'_vote', :locals => { :voteable => answer } %>
-  <h3><a href="/questions/<%= answer.question.id %>/answers/<%= answer.id %>"><%= html_escaper(answer.title) %></a></h3>
-  <p>by <%= html_escaper(answer.author.username) %></p>
+<div id=answer-<%= answer.id %>-container>
+  <%= erb :'votes/_vote', :locals => { :voteable => answer } %>
+  <p class='answer-body'><%= html_escaper(answer.body) %></p>
+  <footer class='answer-footer'>by <%= html_escaper(answer.author.username) %> [<%= answer.created_at %>]</footer>
 </div>
