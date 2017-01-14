@@ -1,13 +1,5 @@
-<!-- error handling/notification of commentability restriction -->
- <% if @msgs %>
-  <% @msgs.each do |msg| %>
-<p class="messages"><% html_escaper(msg) %></p>
-<%else%>
-<!-- do not route to this unless @current_user -->
-
 <form class="comment_form" id="<%=comm" action='/comments' method="post" >
   <input type="text" value="comment_body" placeholder="Comment as <%= html_escaper(@author.username) %>">
   <button type="submit">Submit</button>
 </form>
 
-<%end%>
