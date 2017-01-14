@@ -5,7 +5,7 @@
   </form>
 
   <p>
-    <span class='votes'><%#= helper method to count number of votes %></span>
+    <span class='votes'><%= get_score(voteable) %></span>
   </p>
 
   <form method="post" action='/<%= voteable.class.name.downcase %>s/<%= voteable.id %>/downvote' class="inline">
