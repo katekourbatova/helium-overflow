@@ -9,6 +9,6 @@ helpers do
   end
 
   def get_type(voteable)
-
+    voteable.class.name
   end
 end
