@@ -18,7 +18,7 @@ describe Question do
 
   describe "associations" do
     let(:author){
-      Author.new()
+      User.new()
     }
     let(:answer_1){
       Answer.new({question_id: question.id})

@@ -1,3 +1,4 @@
+<h4 class ="comments_header">Comments</h4>
 <% @comments.each do |comment| %>
   <p class="comment_author"><%= html_escaper(@author.username) %></p>
   <p class="comment_body"><%= html_escaper(@comment.body) %><p>

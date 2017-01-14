@@ -1,0 +1,11 @@
+<h3>Post your question here:</h3>
+
+<%= erb :'_error' %>
+
+<form action="/questions" method="POST">
+  <label for="question-title">Title:</label>
+  <input id="question-title" type="text" name="question[title]" value=<%=  %>>
+  <label for="question-body">Description:</label>
+  <input id="question-body" type="text" name="question[body]" value=<%=  %>>
+  <input type="submit" value="Post">
+</form>
