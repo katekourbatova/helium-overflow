@@ -1,0 +1,15 @@
+<div class="vote-form" id='vote-form'>
+
+  <form method="post" action='/<%= voteable.class.name.downcase %>s/<%= voteable.id %>/upvote' class="inline">
+    <button type="submit" name="upvote" value="upvote" class="vote-button" id="upvote-button"></button>
+  </form>
+
+  <p>
+    <span class='votes'><%= get_score(voteable) %></span>
+  </p>
+
+  <form method="post" action='/<%= voteable.class.name.downcase %>s/<%= voteable.id %>/downvote' class="inline">
+    <button type="submit" name="downvote" value="downvote" class="vote-button" id="downvote-button"></button>
+  </form>
+
+</div>
