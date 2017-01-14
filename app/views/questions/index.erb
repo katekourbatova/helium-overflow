@@ -1,3 +1,7 @@
 <% @questions.each do |question| %>
   <%= erb :'questions/_question', :layout => false, :locals => { :question => question } %>
 <% end %>
+
+<% @answers.find(question_id: question.id).each do |answer| %>
+  <%= erb :'answers/_answer', :layout => false, :locals => { :answer => answer } %>
+<% end %>

@@ -1,5 +1,5 @@
 <div id=question-<%= question.id %>-container>
-  <%= erb :'_vote', :locals => { :voteable => question } %>
+  <%= erb :'votes/_vote', :locals => { :voteable => question } %>
   <h3><a href="/questions/<%= question.id %>"><%= html_escaper(question.title) %></a></h3>
   <p>by <%= html_escaper(question.author.username) %></p>
 </div>
