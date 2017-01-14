@@ -5,11 +5,11 @@
   </form>
 
   <p>
-    <span class='votes'><%= answer.votes.count %></span>
+    <span class='votes'><%#= helper method to count number of votes %></span>
   </p>
 
   <form method="post" action='/<%= voteable.class.name.downcase %>s/<%= voteable.id %>/downvote' class="inline">
     <button type="submit" name="downvote" value="downvote" class="vote-button" id="downvote-button"></button>
   </form>
-  
+
 </div>
