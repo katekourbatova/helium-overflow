@@ -1,5 +1,7 @@
 <form action="/questions" method="POST">
-  <input type="text" name="question[title]" value=<%=  %>>
-  <input type="text" name="question[body]" value=<%=  %>>
-  <input type="submit" value="Post Question">
+  <label for="question-title">Question:</label>
+  <input id="question-title" type="text" name="question[title]" value=<%=  %>>
+  <label for="question-body">Description:</label>
+  <input id="question-body" type="text" name="question[body]" value=<%=  %>>
+  <input type="submit" value="Post">
 </form>

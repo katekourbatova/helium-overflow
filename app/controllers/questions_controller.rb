@@ -9,15 +9,15 @@ get '/' do
   erb :'questions/index'
 end
 
+# form for making new question
+get '/questions/new' do
+  erb :'questions/new'
+end
+
 # a specific question
 get '/questions/:id' do
   @question = Question.find(params[:id])
   erb :'questions/show'
-end
-
-# form for making new question
-get '/questions/new' do
-  erb :'questions/new'
 end
 
 post '/questions' do
