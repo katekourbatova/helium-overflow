@@ -21,7 +21,16 @@ get '/questions/:id' do
 end
 
 post '/questions' do
-  # ...
+  redirect '/login' unless session_current_user
+  @question = Question.new(params[:question])
+  @question.author_id = session_current_user.id
+
+  if @question.save
+    redirect "/questions/#{@question.id}"
+  else
+    @errors = @question.errors.full_messages
+    erb :'entries/new'
+  end
 end
 
 # Show New Question Form
