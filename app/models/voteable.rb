@@ -1,10 +1,10 @@
 module Voteable
-  def downvote(user_id)
-    self.votes.create(value: false, user_id: user_id)
+  def downvote(user)
+    self.votes.create(value: false, user_id: user.id)
   end
 
-  def upvote(user_id)
-    self.votes.create(value: true, user_id: user_id)
+  def upvote(user)
+    self.votes.create(value: true, user_id: user.id)
   end
 
 end
