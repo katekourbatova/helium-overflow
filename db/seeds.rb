@@ -19,16 +19,17 @@ end
 
 
 50.times do
+  author = User.all.sample
   comment = Comment.create!(
                                 body: Faker::Hipster.paragraph(2, true, 4),
-                                author_id: rand(1..20), commentable_id: rand(1..20), commentable_type: ["Question", "Answer"].sample
+                                author_id: author.id, commentable_id: rand(1..20), commentable_type: ["Question", "Answer"].sample
                                 )
 end
 
 50.times do
   comment = Comment.create!(
                                 body: Faker::Hipster.paragraph(2, true, 4),
-                                author_id: 61, commentable_id: rand(1..20), commentable_type: ["Question", "Answer"].sample
+                                author_id: User.last.id, commentable_id: rand(1..20), commentable_type: ["Question", "Answer"].sample
                                 )
 end
 
@@ -39,15 +40,15 @@ end
 end
 
 10.times do
-  Answer.each.do |answer|
-    answer.votes.create!(user_id: User.all.sample, value: [true, false].sample)
+  Answer.all.each do |answer|
+    answer.votes.create!(user_id: User.all.sample.id, value: [true, false].sample)
   end
 
-  Question.each.do |question|
-    question.votes.create!(user_id: User.all.sample, value: [true, false].sample)
+  Question.all.each do |question|
+    question.votes.create!(user_id: User.all.sample.id, value: [true, false].sample)
   end
 
-  Comment.each.do |comment|
-    comment.votes.create!(user_id: User.all.sample, value: [true, false].sample)
+  Comment.all.each do |comment|
+    comment.votes.create!(user_id: User.all.sample.id, value: [true, false].sample)
   end
 end
