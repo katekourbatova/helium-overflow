@@ -1,24 +1,24 @@
 module Voteable
   def downvote(user)
-    delete_old_vote(user) if vote_exists?(user)
-    self.votes.create(value: false, user_id: user.id)
+    @_vote = find_vote(user)
+    @_vote.value = false
+    puts 'saved' if !@_vote.value
   end
 
   def upvote(user)
-    delete_old_vote(user) if vote_exists?(user)
-    self.votes.create(value: true, user_id: user.id)
+    @_vote = find_vote(user)
+    @_vote.value = true
+    puts 'saved' if @_vote.value
   end
 
   def get_type
     self.class.name
   end
 
-  def delete_old_vote(user)
-    vote = Vote.where(user_id: user.id, voteable_type: get_type, voteable_id: self.id)[0]
-    Vote.destroy(vote.id)
+  def find_vote(user)
+    Vote.find_or_initialize_by(user_id: user.id,
+                               voteable_type: get_type,
+                               voteable_id: self.id)
   end
 
-  def vote_exists?(user)
-    return !Vote.where(user_id: user.id, voteable_type: get_type, voteable_id: self.id).empty?
-  end
 end
