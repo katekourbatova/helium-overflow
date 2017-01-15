@@ -5,10 +5,11 @@ get '/login' do
 end
 
 post '/login' do
-  @user = User.authenticate(params[:user]);
+  input = params[:user]
+  @user = User.authenticate(input[:email], input[:password]);
   if @user
     session[:user_id] = @user.id
-    redirect "/users/#{@user.id}"
+    redirect "/"
   else
     @login_error = "User not recognized"
     erb :"users/login"
