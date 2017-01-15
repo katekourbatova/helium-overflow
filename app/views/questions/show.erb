@@ -6,7 +6,10 @@
   <a href="/questions/<%= @question.id %>/answers/new">Answer this question</a>
 </div>
 
+<% @question.comments.each do |comment| %>
+  <%= erb :'comments/_comment', :layout => false, :locals => { :comment => comment } %>
+<% end %>
 
-<% Answer.where(question_id: @question.id).each do |answer| %>
+<% @question.answers.each do |answer| %>
   <%= erb :'answers/_answer', :layout => false, :locals => { :answer => answer } %>
 <% end %>
