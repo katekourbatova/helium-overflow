@@ -5,7 +5,7 @@
   </form>
 
   <p>
-    <span class='votes'><%= get_score(voteable) %></span>
+    <span class='votes'><%= voteable.get_score %></span>
   </p>
   <form class='button-form' method="post" action='/<%= voteable.class.name.downcase %>s/<%= voteable.id %>/downvote' class="inline">
     <button class="downvote" type="submit" name="downvote" class="vote-button" id="downvote-button"></button>
