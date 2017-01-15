@@ -1,4 +1,6 @@
 class Comment < ActiveRecord::Base
+  include Voteable
+
   belongs_to :author, class_name: User
   has_many :votes, :as => :voteable
 

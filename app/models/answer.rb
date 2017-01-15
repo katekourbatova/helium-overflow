@@ -1,5 +1,6 @@
 class Answer < ActiveRecord::Base
-  # Remember to create a migration!
+  include Voteable
+  
   belongs_to :question
   belongs_to :author, class_name: 'User'
   has_many :comments, :as => :commentable
