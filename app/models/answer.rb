@@ -7,4 +7,9 @@ class Answer < ActiveRecord::Base
   has_many :votes, :as => :voteable
 
   validates :body, presence: true
+
+  def time_since_creation
+    hours_number = ((Time.now - created_at) / 3600).round
+    "#{hours_number} hours ago"
+  end
 end
