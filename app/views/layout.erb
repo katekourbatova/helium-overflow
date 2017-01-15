@@ -25,13 +25,13 @@
     <nav>
     <!-- will use CSS to make this a horizontal nav bar -->
       <ul>
-        <li><a href="/">Home</a></li>
+        <li><a class='nav-link' href="/">Home</a></li>
         <% if session[:user_id] %>
-          <li><a href="/questions/new">Ask a Question</a></li>
+          <li><a class='nav-link' href="/questions/new">Ask a Question</a></li>
           <li><a href="/logout">Log Out</a></li>
         <% else %>
-          <li><a href="/login">Log In</a></li>
-          <li><a href="/users/new">Sign Up</a></li>
+          <li><a class='nav-link' href="/login">Log In</a></li>
+          <li><a class='nav-link' href="/users/new">Sign Up</a></li>
         <% end %>
       </ul>
     </nav>

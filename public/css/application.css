@@ -11,10 +11,11 @@ p {
 }
 
 header {
+  position: fixed;
+  top: 0;
   background-color: #A20021;
   width: 100%;
   color: white;
-  padding: 5px 5px;
 }
 
 h1 {
@@ -27,6 +28,25 @@ textarea {
 
 input[type=submit] {
   color: black;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 5px;
+}
+
+nav li {
+  display: inline;
+  margin: 10px 5px;
+}
+
+.nav-link {
+  color: white;
+  text-decoration: none;
+}
+
+.nav-link:hover {
+  color: pink;
 }
 
 #main-postbar {
