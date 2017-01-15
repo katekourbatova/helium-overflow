@@ -34,8 +34,16 @@ input[type=submit] {
   margin: auto;
 }
 
-.postbar {
+.votebar {
+  width: 35px;
+}
 
+.votebar * {
+  text-align: center;
+}
+
+.postbar {
+  margin-left: 50px;
 }
 
 .post-container {
