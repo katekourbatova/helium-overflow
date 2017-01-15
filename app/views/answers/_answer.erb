@@ -1,5 +1,8 @@
-<div class=answer-container>
+<div class='answer-container post-container'>
   <%= erb :'votes/_vote', :locals => { :voteable => answer } %>
-  <p class='answer-body'><%= html_escaper(answer.body) %></p>
-  <footer class='answer-footer'>by <%= html_escaper(answer.author.username) %> [<%= answer.created_at %>]</footer>
+  <div class='postbar'>
+    <h3>Answer:</h3>
+    <p class='answer-body'><%= html_escaper(answer.body) %></p>
+    <footer class='answer-footer'>by <%= html_escaper(answer.author.username) %> [<%= answer.created_at %>]</footer>
+  </div>
 </div>

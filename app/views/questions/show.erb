@@ -1,12 +1,14 @@
-<div class="show-question-container">
-  <%= erb :'votes/_vote', :locals => { :voteable => @question } %>
-  <h3 class='question-title'><%= html_escaper(@question.title) %></h3>
-  <p class='question-body' ><%= html_escaper(@question.body) %></p>
-  <p class='question-footer'>by <%= html_escaper(@question.author.username) %> [<%= html_escaper(@question.created_at) %>]</p>
-  <a href="/questions/<%= @question.id %>/answers/new">Answer this question</a>
+<div id='main-postbar'>
+  <%= erb :'questions/_full_question' %>
+
+  <% @question.comments.each do |comment| %>
+    <%= erb :'comments/_comment', :locals => { :comment => comment } %>
+  <% end %>
+
+  <% @question.answers.each do |answer| %>
+    <%= erb :'answers/_answer', :locals => { :answer => answer } %>
+      <% answer.comments.each do |comment| %>
+        <%= erb :'comments/_comment', :locals => { :comment => comment } %>
+      <% end %>
+  <% end %>
 </div>
-
-
-<% Answer.where(question_id: @question.id).each do |answer| %>
-  <%= erb :'answers/_answer', :layout => false, :locals => { :answer => answer } %>
-<% end %>
