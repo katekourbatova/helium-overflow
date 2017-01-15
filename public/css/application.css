@@ -42,7 +42,6 @@ header p a:nth-child(n + 2):before {
   background-color: lightgray;
   color: black;
   padding: 10px;
-  height: 100px;
 }
 
 .answer-container{
