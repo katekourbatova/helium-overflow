@@ -42,6 +42,10 @@ textarea {
   color: black;
 }
 
+input[type=submit] {
+  color: black;
+}
+
 .show-question-container, .answer-container, .question-container{
   background-color: lightgray;
   color: black;
