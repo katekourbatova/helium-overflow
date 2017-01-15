@@ -15,6 +15,7 @@ header {
   top: 0;
   background-color: #A20021;
   width: 100%;
+  height: 60px;
   color: white;
 }
 
@@ -50,7 +51,7 @@ nav li {
 }
 
 #main-postbar {
-  max-width: 700px;
+  max-width: 800px;
   margin: auto;
 }
 
@@ -84,7 +85,7 @@ nav li {
 
 .comment-container{
   background-color: lightgreen;
-  max-width: 650px;
+  max-width: 750px;
   margin-left: 50px;
 }
 
