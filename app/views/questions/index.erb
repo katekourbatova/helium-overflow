@@ -1,12 +1,3 @@
-<nav>
-<% if session[:user_id] %>
-  <div><a href="/logout">Log Out</a></div>
-  <% else %>
-    <a href="/login">Sign In</a> |
-     <a href="/users/new">Sign Up</a>
-      <% end %>
-</nav>
-
 <% @questions.each do |question| %>
   <%= erb :'questions/_question', :layout => false, :locals => { :question => question } %>
 <% end %>
