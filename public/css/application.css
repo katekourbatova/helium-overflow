@@ -29,12 +29,21 @@ input[type=submit] {
   color: black;
 }
 
-.post-container {
+#main-postbar {
   max-width: 700px;
-  background-color: lightgray;
+  margin: auto;
+}
+
+.postbar {
+
+}
+
+.post-container {
   color: black;
   padding: 10px;
-  margin: auto;
+  border-radius: 10px;
+  margin: 10px;
+  padding: 10px;
 }
 
 .question-container{
@@ -47,6 +56,8 @@ input[type=submit] {
 
 .comment-container{
   background-color: lightgreen;
+  max-width: 650px;
+  margin-left: 50px;
 }
 
 .answer-container{
