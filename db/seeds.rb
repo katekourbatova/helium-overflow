@@ -5,8 +5,8 @@ Answer.all.delete_all
 Vote.all.delete_all
 
 20.times do
-  user = User.new( username: Faker::Internet.user_name,
-                       email: Faker::Internet.email)
+  user = User.new(  username: Faker::Internet.user_name,
+                    email: Faker::Internet.email )
   user.password = Faker::Pokemon.name
   user.save!
 end
@@ -17,37 +17,30 @@ helium_user.password = 'helium'
 helium_user.save!
 
 
-20.times do
-  question = Question.create!(  title: Faker::Educator.course,
-                                body: Faker::Hipster.paragraph(2, true, 4),
-                                author_id: rand(1..20))
+10.times do
+  question = Question.new(  title: Faker::Educator.course,
+                            body: Faker::Hipster.paragraph(2, true, 4) )
+  question.author = User.all.sample
+  question.save!
 end
 
-50.times do
-  answer = Answer.create!(  body: Faker::Hipster.paragraph(2, true, 4),
-                            question_id: rand(1..20),
-                            author_id: rand(1..20) )
+25.times do
+  answer = Answer.new(  body: Faker::Hipster.paragraph(2, true, 4) )
+  answer.author = User.all.sample
+  answer.question = Question.all.sample
+  answer.save!
 end
 
-50.times do
-  author = User.all.sample
-  comment = Comment.create!(
-                                body: Faker::Hipster.paragraph(2, true, 4),
-                                author_id: author.id, commentable_id: rand(1..20), commentable_type: ["Question", "Answer"].sample
-                                )
+25.times do
+  comment = Question.all.sample.comments.new(body: Faker::Hipster.paragraph(2, true, 4))
+  comment.author = User.all.sample
+  comment.save!
 end
 
-50.times do
-  comment = Comment.create!(
-                                body: Faker::Hipster.paragraph(2, true, 4),
-                                author_id: User.last.id, commentable_id: rand(1..20), commentable_type: ["Question", "Answer"].sample
-                                )
-end
-
-50.times do
-  answer = Answer.create!(  body: Faker::Hipster.paragraph(2, true, 4),
-                            question_id: rand(1..20),
-                            author_id: rand(1..20) )
+25.times do
+  comment = Answer.all.sample.comments.new(body: Faker::Hipster.paragraph(2, true, 4))
+  comment.author = User.all.sample
+  comment.save!
 end
 
 10.times do
@@ -63,3 +56,4 @@ end
     comment.votes.create!(user_id: User.all.sample.id, value: [true, false].sample)
   end
 end
+
