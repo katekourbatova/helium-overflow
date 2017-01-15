@@ -2,6 +2,6 @@
   <%= erb :'votes/_vote', :locals => { :voteable => comment } %>
   <div class='postbar'>
     <p class='comment-body'><%= html_escaper(comment.body) %></p>
-    <footer class='comment-footer'>by <%= html_escaper(comment.author.username) %> [<%= comment.created_at %>]</footer>
+    <footer class='comment-footer'>by <%= html_escaper(comment.author.username) %> [<%= comment.time_since_creation %>]</footer>
   </div>
 </div>

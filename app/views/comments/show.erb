@@ -2,4 +2,5 @@
 <% @comments.each do |comment| %>
   <p class="comment_author"><%= html_escaper(@author.username) %></p>
   <p class="comment_body"><%= html_escaper(@comment.body) %><p>
+  <p class="comment-stats">by <%= html_escaper(comment.author.username) %> [<%= comment.time_since_creation %>]</p>
 <%end%>
