@@ -3,6 +3,6 @@
   <div class='postbar'>
     <h3>Answer:</h3>
     <p class='answer-body'><%= html_escaper(answer.body) %></p>
-    <footer class='answer-footer'>by <%= html_escaper(answer.author.username) %> [<%= answer.created_at %>]</footer>
+    <footer class='answer-footer'>by <%= html_escaper(answer.author.username) %> [<%= answer.time_since_creation %>]</footer>
   </div>
 </div>
