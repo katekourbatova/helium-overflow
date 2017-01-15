@@ -2,13 +2,11 @@ module Voteable
   def downvote(user)
     @_vote = find_vote(user)
     @_vote.value = false
-    puts 'saved' if !@_vote.value
   end
 
   def upvote(user)
     @_vote = find_vote(user)
     @_vote.value = true
-    puts 'saved' if @_vote.value
   end
 
   def get_type
