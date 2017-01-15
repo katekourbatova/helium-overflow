@@ -1,0 +1,7 @@
+<h2>Your answer:</h2>
+<form action="/questions/<%=@question.id%>/answers/" method="post">
+  <textarea id="answer-body" name="answer[body]" placeholder="Your answer..."></textarea>
+  <div>
+    <input type="submit" value="Post">
+  </div>
+</form>

@@ -38,6 +38,10 @@ header p a:nth-child(n + 2):before {
   content: " | ";
 }
 
+textarea {
+  color: black;
+}
+
 .show-question-container, .answer-container, .question-container{
   background-color: lightgray;
   color: black;
