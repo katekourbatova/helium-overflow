@@ -2,10 +2,11 @@
 
 <%= erb :'_error' %>
 
-<form action="/questions" method="POST">
-  <label for="question-title">Title:</label>
-  <input id="question-title" type="text" name="question[title]" value=<%=  %>>
-  <label for="question-body">Description:</label>
-  <input id="question-body" type="text" name="question[body]" value=<%=  %>>
-  <input type="submit" value="Post">
+<form id="new-question-form" action="/questions" method="POST">
+  <div><label for="question-title">Title:</label>
+  <input id="question-title" type="text" name="question[title]" value=<%=  %>></div>
+  <div>
+    <textarea id="question-body" name="question[body]" placeholder="Your question..."rows="5" cols="50"><%=  %></textarea>
+    <input type="submit" value="Post">
+  </div>
 </form>
