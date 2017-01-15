@@ -1,4 +1,4 @@
-<div class=comment-container>
+<div class='comment-container post-container'>
   <%= erb :'votes/_vote', :locals => { :voteable => comment } %>
   <p class='comment-body'><%= html_escaper(comment.body) %></p>
   <footer class='comment-footer'>by <%= html_escaper(comment.author.username) %> [<%= comment.created_at %>]</footer>

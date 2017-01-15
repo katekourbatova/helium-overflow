@@ -29,12 +29,24 @@ input[type=submit] {
   color: black;
 }
 
-.show-question-container, .answer-container, .question-container{
+.post-container {
   max-width: 700px;
   background-color: lightgray;
   color: black;
   padding: 10px;
   margin: auto;
+}
+
+.question-container{
+  background-color: lightgray;
+}
+
+.answer-container{
+  background-color: lightblue;
+}
+
+.comment-container{
+  background-color: lightgreen;
 }
 
 .answer-container{
