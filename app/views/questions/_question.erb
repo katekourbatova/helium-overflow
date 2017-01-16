@@ -2,6 +2,6 @@
   <%= erb :'votes/_vote', :locals => { :voteable => question } %>
   <div class='postbar'>
     <h3><a href="/questions/<%= question.id %>"><%= html_escaper(question.title) %></a></h3>
-    <p class='question-footer'>by <%= html_escaper(@question.author.username) %> [<%= @question.time_since_creation %>]</p>
+    <p class='question-footer'>by <%= html_escaper(question.author.username) %> [<%= question.time_since_creation %>]</p>
   </div>
 </div>
