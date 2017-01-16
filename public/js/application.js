@@ -2,7 +2,9 @@ $(document).ready(function() {
   $('#show-answer-form').click(function(event){
     event.preventDefault();
     $.get($(this).attr('href'), function(response){
-      console.log('response', response);
+      $('#show-answer-form').hide();
+      $('.question-container').after(response);
+      $('#answer-body').focus();
     })
   })
 });

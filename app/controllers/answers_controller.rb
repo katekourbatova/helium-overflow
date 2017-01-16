@@ -1,7 +1,11 @@
 get '/questions/:id/answers/new' do
   redirect '/login' unless session_current_user
   @question = Question.find(params[:id])
-  erb :'answers/new'
+  if request.xhr?
+    erb :'answers/_new', layout: false
+  else
+    erb :'answers/new'
+  end
 end
 
 post '/questions/:id/answers/' do
