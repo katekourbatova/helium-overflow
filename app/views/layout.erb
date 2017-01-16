@@ -27,6 +27,7 @@
       <ul>
         <li><a class='nav-link' href="/">Home</a></li>
         <% if session[:user_id] %>
+          <li id='username'><a class='nav-link' href="/">Happy Helium, <%= session_current_user.username %>!</a></li>
           <li><a class='nav-link' href="/questions/new">Ask a Question</a></li>
           <li><a class='nav-link' href="/logout">Log Out</a></li>
         <% else %>

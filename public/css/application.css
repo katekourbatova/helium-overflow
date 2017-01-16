@@ -36,13 +36,19 @@ input[type=submit] {
 }
 
 nav ul {
-    list-style-type: none;
-    padding: 5px;
+  list-style-type: none;
+  padding: 5px;
+  text-align: right;
+}
+
+#username {
+  float: left;
+  margin: auto 20px;
 }
 
 nav li {
   display: inline;
-  margin: 10px 5px;
+  margin: 10px 20px;
 }
 
 .nav-link {
