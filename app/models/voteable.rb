@@ -14,6 +14,15 @@ module Voteable
     "#{hours_number} hours ago"
   end
 
+  def get_score
+    all_votes = self.votes
+    all_votes.reduce(0) do  |sum, vote|
+      sum += 1 if vote.value
+      sum -= 1 if !vote.value
+      sum
+    end
+  end
+
   def parent_question_id
     case Module.get_const(self.get_type)
     when Question
