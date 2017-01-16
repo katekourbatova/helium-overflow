@@ -49,9 +49,9 @@ get '/answers/:id/comments/new' do
   @answer = Answer.find(params[:id])
   @user = session_current_user
   if session_is_current_user?(@user)
-    p @author = @user
-    p @commentable_id = @answer.id
-    p @commentable_type = "answers"
+     @author = @user
+     @commentable_id = @answer.id
+     @commentable_type = "answers"
     erb :'comments/_form'
   else
     @msgs = ["You must be logged in to comment"]
