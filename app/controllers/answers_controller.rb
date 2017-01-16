@@ -21,6 +21,8 @@ post '/questions/:id/answers/' do
       redirect "/questions/#{@question.id}"
     end
   else
+    status 422
+    @errors = @answer.errors.full_messages
     if request.xhr?
       erb :'_error', layout: false
     else
