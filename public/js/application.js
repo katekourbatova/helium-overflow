@@ -1,7 +1,40 @@
 $(document).ready(function() {
-  // This is called after the document has loaded in its entirety
-  // This guarantees that any elements we bind to will exist on the page
-  // when we try to bind to them
+  $('#show-answer-form').click(function(event){
+    event.preventDefault();
+    $.get($(this).attr('href'), showAnswerForm)
+  })
 
-  // See: http://docs.jquery.com/Tutorials:Introducing_$(document).ready()
+  $('#main-postbar').on('submit', '#new-answer-form',function(event){
+    event.preventDefault();
+    var data = $(this).serialize();
+    $.post($(this).attr('action'), data, showNewAnswer)
+      .fail(showAnswerFail)
+  })
+
+
+
+///////////////////// CALLBACK FUNCTIONS /////////////////////
+
+function showAnswerForm(response){
+  $('#show-answer-form').hide();
+  $('.question-container').after(response);
+  $('#answer-body').focus();
+}
+
+function showNewAnswer(response){
+  removeErrors();
+  $('#new-answer-form').hide();
+  $('#show-answer-form').show();
+  $('#main-postbar').append(response);
+}
+
+function showAnswerFail(response){
+  removeErrors()
+  $('.question-container').after(response.responseText)
+}
+
+function removeErrors(){
+  $('.error').remove();
+}
+
 });
