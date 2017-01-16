@@ -4,8 +4,6 @@ post '/:voteable_type/:id/upvote' do
   voteable_class = Module.const_get(params[:voteable_type].chop.capitalize)
   what_to_upvote = voteable_class.find(params[:id])
   what_to_upvote.upvote(user)
-  p what_to_upvote
-  p what_to_upvote.parent_question_id
   redirect "/questions/#{what_to_upvote.parent_question_id}"
 end
 
