@@ -4,6 +4,13 @@ $(document).ready(function() {
     $.get($(this).attr('href'), showAnswerForm)
   })
 
+  $('#main-postbar').on('submit', '#new-answer-form',function(event){
+    event.preventDefault();
+    console.log('I clicked!!!');
+  })
+
+
+
 ///////////////////// CALLBACK FUNCTIONS /////////////////////
 
 function showAnswerForm(response){
