@@ -5,6 +5,6 @@
     <p class='question-body' ><%= html_escaper(@question.body) %></p>
     <p class='question-footer'>by <%= html_escaper(@question.author.username) %> [<%= @question.time_since_creation %>]</p>
     <a id='show-answer-form' href="/questions/<%= @question.id %>/answers/new">Answer this question</a><br>
-    <a href="/questions/<%= @question.id %>/comments/new">Comment on this question</a>
+    <a id='show-comment-form' href="/questions/<%= @question.id %>/comments/new">Comment on this question</a>
   </div>
 </div>

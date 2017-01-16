@@ -9,25 +9,37 @@ end
 
 get '/questions/:id/comments/new' do
     @user = session_current_user
-  if session_is_current_user?(@user)
-    @author = @user
     @question = Question.find(params[:id])
     @commentable_type = "questions"
     @commentable_id = @question.id
-    erb :'comments/_form'
+  if request.xhr?
+
+    erb :'comments/_form', layout: false
   else
-    @msgs = ["You must be logged in to comment"]
-    erb :'/comments/errors', layout: false
+    if session_is_current_user?(@user)
+      erb :'comments/_form'
+    else
+      @msgs = ["You must be logged in to comment"]
+      erb :'/comments/errors', layout: false
+    end
   end
 end
 
 post '/questions/:question_id/comments' do
   @author = session_current_user
+  @question = Question.find(params[:question_id])
+  @commentable_id = @question.id
+  @commentable_type = "questions"
   if session_is_current_user?(@author)
-    @question = Question.find(params[:question_id])
-
-    @comment = @question.comments.create(body: params[:comment_body], author_id: @author.id, commentable_id: @question.id, commentable_type: "question" )
-    redirect "/questions/#{@question.id}"
+    @comment = @question.comments.new(body: params[:comment_body], author_id: @author.id )
+    if @comment.save
+      if request.xhr?
+        "string"
+        erb :'/comments/_comment', layout: false, :locals => {comment: @comment}
+      else
+        erb :'/comments/show'
+      end
+    end
   else
     @msgs = ["You must be logged in to comment"]
      erb :'comments/errors'
