@@ -24,7 +24,7 @@ module Voteable
   end
 
   def parent_question_id
-    case Module.get_const(self.get_type)
+    case Module.const_get(self.get_type)
     when Question
       return self.id
     when Answer
