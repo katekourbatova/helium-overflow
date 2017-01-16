@@ -1,5 +1,5 @@
 <div id='main-postbar'>
-  <%= erb :'questions/_full_question'g %>
+  <%= erb :'questions/_full_question' %>
 
   <% @question.comments.each do |comment| %>
     <%= erb :'comments/_comment', :locals => { :comment => comment } %>
