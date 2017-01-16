@@ -1,5 +1,5 @@
 post '/:voteable_type/:id/upvote' do
-  user = session[:user_id]
+  user = User.find(session[:user_id])
   redirect '/users/login' if !session_is_current_user?(user)
   voteable_class = Module.const_get(params[:voteable_type].chop.capitalize)
   what_to_upvote = voteable_class.find(params[:id])
@@ -8,7 +8,7 @@ post '/:voteable_type/:id/upvote' do
 end
 
 post '/:voteable_type/:id/downvote' do
-  user = session[:user_id]
+  user = User.find(session[:user_id])
   redirect '/users/login' if !session_is_current_user?(user)
   voteable_class = Module.const_get(params[:voteable_type].chop.capitalize)
   what_to_downvote = voteable_class.find(params[:id])
