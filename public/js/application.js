@@ -1,7 +1,8 @@
 $(document).ready(function() {
   $('#show-answer-form').click(function(event){
-    $.get($(this).attr('href'), function(){
-      console.log('REQUESTED!');
+    event.preventDefault();
+    $.get($(this).attr('href'), function(response){
+      console.log('response', response);
     })
   })
 });

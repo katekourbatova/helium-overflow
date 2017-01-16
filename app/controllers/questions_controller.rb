@@ -11,7 +11,12 @@ end
 
 # form for making new question
 get '/questions/new' do
-  erb :'questions/new'
+  if request.xhr?
+    erb :'questions/_new', layout: false
+    'not working'
+  else
+    erb :'questions/new'
+  end
 end
 
 # a specific question
