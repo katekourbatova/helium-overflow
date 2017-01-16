@@ -126,3 +126,7 @@ nav li {
   border-bottom: 10px solid transparent;
 }
 
+.vote-highlight {
+  border-color: #A20021;
+}
+
