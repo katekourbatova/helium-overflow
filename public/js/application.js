@@ -8,7 +8,9 @@ $(document).ready(function() {
     event.preventDefault();
     var data = $(this).serialize();
     $.post($(this).attr('action'), data, function(response){
-      console.log('response', response);
+      $('#new-answer-form').hide();
+      $('#show-answer-form').show();
+      $('#main-postbar').append(response);
     })
   })
 
