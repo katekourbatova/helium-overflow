@@ -1,5 +1,8 @@
-<form class="comment_form" id="<%=comm" action='/comments' method="post" >
-  <input type="text" value="comment_body" placeholder="Comment as <%= html_escaper(@author.username) %>">
-  <button type="submit">Submit</button>
+<form class="comment_form" id="new-comment-form" action="/<%=@commentable_type%>/<%=@commentable_id%>/comments" method="post" >
+  <textarea id="comment-body" name="comment_body" rows="2" cols="50" placeholder="What's on your mind?"></textarea>
+  <div class="post_comment_button">
+    <input type="submit" value="Post Comment">
+  </div>
 </form>
+
 
