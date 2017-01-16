@@ -6,7 +6,10 @@ $(document).ready(function() {
 
   $('#main-postbar').on('submit', '#new-answer-form',function(event){
     event.preventDefault();
-    console.log('I clicked!!!');
+    var data = $(this).serialize();
+    $.post($(this).attr('action'), data, function(response){
+      console.log('response', response);
+    })
   })
 
 
