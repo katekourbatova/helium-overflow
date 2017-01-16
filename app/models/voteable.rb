@@ -9,6 +9,11 @@ module Voteable
     @_vote.value = true
   end
 
+  def time_since_creation
+    hours_number = ((Time.now - created_at) / 3600).round
+    "#{hours_number} hours ago"
+  end
+
   def parent_question_id
     case Module.get_const(self.get_type)
     when Question
