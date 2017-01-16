@@ -2,8 +2,7 @@ require_relative '../spec_helper'
 
 describe Question do
   let(:question_options) {{ title: 'Balloon exploded',
-                                    body: 'How do you prevent a balloon from exploding?',
-                                    author_id: 1 }}
+                                    body: 'How do you prevent a balloon from exploding?'}}
   let(:question){ Question.new question_options }
 
   describe "a question can be created" do

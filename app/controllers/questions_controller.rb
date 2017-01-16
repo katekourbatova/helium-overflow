@@ -1,16 +1,14 @@
-# All questions - redirects to homepage
 get '/questions' do
   redirect '/'
 end
 
-#homepage
 get '/' do
   @questions = Question.all
   erb :'questions/index'
 end
 
-# form for making new question
 get '/questions/new' do
+  redirect '/login' unless session_current_user
   if request.xhr?
     erb :'questions/_new', layout: false
     'not working'
@@ -19,7 +17,6 @@ get '/questions/new' do
   end
 end
 
-# a specific question
 get '/questions/:id' do
   @question = Question.find(params[:id])
   erb :'questions/show'
@@ -37,5 +34,3 @@ post '/questions' do
     erb :'questions/new'
   end
 end
-
-# Show New Question Form
