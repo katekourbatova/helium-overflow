@@ -4,7 +4,6 @@
     <h3 class='question-title'><%= html_escaper(@question.title) %></h3>
     <p class='question-body' ><%= html_escaper(@question.body) %></p>
     <p class='question-footer'>by <%= html_escaper(@question.author.username) %> [<%= html_escaper(@question.created_at) %>]</p>
-    <a href="/questions/<%= @question.id %>/answers/new">Answer this question</a></br>
-    <a href="/questions/<%= @question.id %>/comments/new">Comment on this question</a>
+    <a href="/questions/<%= @question.id %>/answers/new">Answer this question</a>
   </div>
 </div>
