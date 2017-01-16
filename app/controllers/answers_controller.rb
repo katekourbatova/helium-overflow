@@ -14,6 +14,17 @@ post '/questions/:id/answers/' do
   @answer = Answer.new(params[:answer])
   @answer.question_id = @question.id
   @answer.author_id = session_current_user.id
-  @answer.save
-  redirect "/questions/#{@question.id}"
+  if @answer.save
+    if request.xhr?
+      erb :'answers/_answer', layout: false, locals: { :answer => @answer }
+    else
+      redirect "/questions/#{@question.id}"
+    end
+  else
+    if request.xhr?
+      erb :'_error', layout: false
+    else
+      erb :'answers/new'
+    end
+  end
 end
