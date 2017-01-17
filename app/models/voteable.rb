@@ -2,11 +2,14 @@ module Voteable
   def downvote(user)
     @_vote = find_vote(user)
     @_vote.value = false
+    @_vote.save
   end
 
   def upvote(user)
     @_vote = find_vote(user)
     @_vote.value = true
+    @_vote.save
+
   end
 
   def time_since_creation
@@ -24,12 +27,12 @@ module Voteable
   end
 
   def parent_question_id
-    case Module.const_get(self.get_type)
-    when Question
+    case self.get_type
+    when 'Question'
       return self.id
-    when Answer
+    when 'Answer'
       return self.question_id
-    when Comment
+    when 'Comment'
       return comment_parent_question_id
     end
   end
