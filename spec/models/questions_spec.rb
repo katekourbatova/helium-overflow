@@ -1,11 +1,13 @@
 require_relative '../spec_helper'
 
 describe Question do
+
   let(:question_options) {{ title: 'Balloon exploded',
                                     body: 'How do you prevent a balloon from exploding?'}}
   let(:question){ Question.new question_options }
 
   describe "a question can be created" do
+
     it 'has a title' do
       expect(question.title).to eq('Balloon exploded')
     end
@@ -16,29 +18,41 @@ describe Question do
   end
 
   describe "associations" do
-    let(:author){
-      User.new()
-    }
-    let(:answer_1){
-      Answer.new({question_id: question.id})
-    }
-    let(:comment_1){
-      Comment.new({ commentable_id: 1, commentable_type: 'Question' })
-    }
+
+    let(:questioner){ FactoryGirl.create(:user) }
+
+    let(:answerer){ FactoryGirl.create(:user) }
+
+    let(:commenter){ FactoryGirl.create(:user) }
+
+    let(:question){ FactoryGirl.create(:question, author: questioner) }
+
+    let(:answer){ FactoryGirl.create(:answer, question: question, author: answerer) }
+
+    let(:comment){ FactoryGirl.create(:question_comment, commentable: question, author: commenter) }
+
+    let(:comment_other){ FactoryGirl.create(:question_comment) }
+
+    let(:vote){ FactoryGirl.create(:question_upvote, voteable: question, user: commenter) }
+
     it 'belongs to an author' do
-       expect(question.author).to eq(author)
+       expect(question.author).to eq(questioner)
     end
 
     it 'can have many answers' do
-       expect(question.answers).to contain(answer_1)
+       expect(question.answers).to include(answer)
     end
 
     it 'can have many comments' do
-       expect(question.comments).to contain(comment_1)
+       expect(question.comments).to include(comment)
+    end
+
+    it 'can have its own comments comments' do
+       expect(question.comments).to_not include(comment_other)
     end
 
     it 'can have many votes' do
-       expect(question.votes).to contain(vote_1)
+       expect(question.votes).to include(vote)
     end
   end
 

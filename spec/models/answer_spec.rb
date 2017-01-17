@@ -1,9 +1,9 @@
 require_relative '../spec_helper'
 
 describe Answer do
-  let(:answer_options) {{body:'Your question has an answer', question_id: 1, author_id: 1}}
-  let(:answer){Answer.create!(answer_options)}
-  let(:comment){Comment.create!({body:'This is a comment', commentable_type: 'Answer',commentable_id: answer.id})}
+  let(:answer_options) {{body:'Your question has an answer'}}
+  let(:answer){FactoryGirl.create(:answer, answer_options)}
+  let(:comment){FactoryGirl.create(:answer_comment, {commentable: answer, body:'This is a comment'})}
 
   it 'has a body' do
     expect(answer.body).to eq('Your question has an answer')
@@ -16,7 +16,7 @@ describe Answer do
   end
 
   describe 'validations' do
-    let(:bodyless_answer) {Answer.new(answer_options.except(:body))}
+    let(:bodyless_answer) {FactoryGirl.build(:answer, {:body => nil})}
     it 'requires a body' do
       expect(bodyless_answer).to be_invalid
     end
