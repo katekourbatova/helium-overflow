@@ -8,6 +8,8 @@ get '/questions/:id/comments' do
 end
 
 get '/questions/:id/comments/new' do
+  session_require_login!
+
     @user = session_current_user
     @question = Question.find(params[:id])
     @commentable_type = "questions"
@@ -26,6 +28,8 @@ get '/questions/:id/comments/new' do
 end
 
 post '/questions/:question_id/comments' do
+  session_require_login!
+
   @author = session_current_user
   @question = Question.find(params[:question_id])
   @commentable_id = @question.id
@@ -51,39 +55,24 @@ end
 
 # ROUTES FOR COMMENTS ON ANSWERS
 
-get '/answers/:id/comments' do
+before '/answers/:id/comments*' do
   @answer = Answer.find(params[:id])
+end
+
+get '/answers/:id/comments' do
   @comments = @answer.comments
-  erb :answers
+  erb :'answers/comments/show'
 end
 
 get '/answers/:id/comments/new' do
-  @answer = Answer.find(params[:id])
-  @user = session_current_user
-  if session_is_current_user?(@user)
-     @author = @user
-     @commentable_id = @answer.id
-     @commentable_type = "answers"
-    erb :'comments/_form'
-  else
-    @msgs = ["You must be logged in to comment"]
-    erb :'/comments/errors'
-  end
+  session_require_login!
+  @commentable_id = @answer.id
+  @commentable_type = "answers"
+  erb :'comments/_form'
 end
 
-post '/answers/:answer_id/comments' do
-  @author = session_current_user
-  if session_is_current_user?(@author)
-    p @commentable_id = @answer.id
-    p @commentable_type = "answers"
-    @answer = Answer.find(params[:answer_id])
-    @author = session_current_user
-    @comment = @answer.comments.create(body: params[:comment_body], author_id: @author.id, commentable_id: @answer.id, commentable_type: "answer" )
-  end
-  if session_is_current_user(@author)
-    redirect '/answers/:answer_id'
-  else
-    @msgs = "You must be logged in to comment"
-    erb :'/comments/errors'
-  end
+post '/answers/:id/comments' do
+  session_require_login!
+  @answer.comments.create!(body: params[:comment_body], author: session_current_user)
+  redirect '/answers/:answer_id'
 end

@@ -1,5 +1,9 @@
 helpers do
 
+  def session_require_login!
+    redirect '/login' unless session_current_user
+  end
+
   def session_current_user
     if session[:user_id].nil?
       @_current_user = nil

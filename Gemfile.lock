@@ -104,6 +104,3 @@ DEPENDENCIES
   sinatra (~> 1.0)
   sinatra-contrib
   thin
-
-BUNDLED WITH
-   1.12.5

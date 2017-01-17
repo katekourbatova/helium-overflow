@@ -7,8 +7,9 @@ get '/' do
   erb :'questions/index'
 end
 
+
 get '/questions/new' do
-  redirect '/login' unless session_current_user
+  session_require_login!
   if request.xhr?
     erb :'questions/_new', layout: false
     'not working'
@@ -23,7 +24,7 @@ get '/questions/:id' do
 end
 
 post '/questions' do
-  redirect '/login' unless session_current_user
+  session_require_login!
   @question = Question.new(params[:question])
   @question.author_id = session_current_user.id
 

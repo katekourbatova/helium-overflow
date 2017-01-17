@@ -1,5 +1,5 @@
 post '/:voteable_type/:id/upvote' do
-  redirect '/login' unless session_current_user
+  session_require_login!
   user = User.find(session_current_user.id)
   voteable_class = Module.const_get(params[:voteable_type].chop.capitalize)
   what_to_upvote = voteable_class.find(params[:id])
@@ -8,7 +8,7 @@ post '/:voteable_type/:id/upvote' do
 end
 
 post '/:voteable_type/:id/downvote' do
-  redirect '/login' unless session_current_user
+  session_require_login!
   user = User.find(session[:user_id])
   voteable_class = Module.const_get(params[:voteable_type].chop.capitalize)
   what_to_downvote = voteable_class.find(params[:id])
