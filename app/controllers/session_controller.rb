@@ -8,7 +8,7 @@ post '/login' do
   input = params[:user]
   @user = User.authenticate(input[:email], input[:password]);
   if @user
-    session[:user_id] = @user.id
+    session_set_user @user
     redirect "/"
   else
     @login_error = "User not recognized"
@@ -17,7 +17,7 @@ post '/login' do
 end
 
 get '/logout' do
-  session.destroy
+  session_logout
   redirect "/questions"
 end
 

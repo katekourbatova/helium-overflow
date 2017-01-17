@@ -7,4 +7,7 @@ class Vote < ActiveRecord::Base
   validates :user_id, presence: true
   validates :voteable_id, presence: true
   validates :voteable_type, presence: true
+
+  scope :up, ->() { where(value: true) }
+  scope :down, ->() { where(value: false) }
 end

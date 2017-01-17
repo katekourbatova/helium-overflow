@@ -17,6 +17,10 @@ module Voteable
     "#{hours_number} hours ago"
   end
 
+  def score
+    self.votes.up.count - self.votes.down.count
+  end
+
   def get_score
     all_votes = self.votes
     all_votes.reduce(0) do  |sum, vote|
